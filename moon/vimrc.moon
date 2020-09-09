@@ -28,16 +28,17 @@ vimp.nnoremap '<leader>n', -> vim.wo.number = not vim.wo.number
 vimp.nnoremap 'J', 'mzJ`z'
 
 -- Edit the primary vimrc
-vimp.nnoremap '<leader>ev', -> vim.cmd("vsplit ~/.config/nvim/plugged/vimpeccable-moonscript-vimrc-example/moon/vimrc.moon")
+vimp.nnoremap '<leader>ev', -> vim.cmd("vsplit ~/.config/nvim/plugged/vimpeccable-moonscript-vimrc-advanced-example/moon/vimrc.moon")
 -- This would work too:
--- vimp.nnoremap '<leader>ev', ':vsplit ~/.config/nvim/plugged/vimpeccable-moonscript-vimrc-example/moon/vimrc.moon<cr>'
+-- vimp.nnoremap '<leader>ev', ':vsplit ~/.config/nvim/plugged/vimpeccable-moonscript-vimrc-advanced-example/moon/vimrc.moon<cr>'
 -- Or this:
--- vimp.nnoremap '<leader>ev', [[:vsplit ~/.config/nvim/plugged/vimpeccable-moonscript-vimrc-example/moon/vimrc.moon<cr>]]
+-- vimp.nnoremap '<leader>ev', [[:vsplit ~/.config/nvim/plugged/vimpeccable-moonscript-vimrc-advanced-example/moon/vimrc.moon<cr>]]
 
 -- Hot reload config
 vimp.nnoremap '<leader>r', ->
   vimp.unmapAll!
   util.unloadLuaNamespace('vimrc')
+  vim.cmd('silent wa')
   MoonMaker.compileAll(false)
   require('vimrc')
   print("Reloaded vimrc")
