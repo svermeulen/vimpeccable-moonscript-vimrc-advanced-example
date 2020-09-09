@@ -1,5 +1,7 @@
 
 require('vimp')
+util = require('vimrc.util')
+MoonMaker = require("moonmaker")
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -11,6 +13,8 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = vim.o.tabstop
 
 vim.g.mapleader = " "
+
+vim.cmd('colorscheme gruvbox')
 
 -- Note that we are using 'vimp' here for vimpeccable
 vimp.nnoremap '<leader>hw', ->
@@ -30,4 +34,10 @@ vimp.nnoremap '<leader>ev', -> vim.cmd("vsplit ~/.config/nvim/plugged/vimpeccabl
 -- Or this:
 -- vimp.nnoremap '<leader>ev', [[:vsplit ~/.config/nvim/plugged/vimpeccable-moonscript-vimrc-example/moon/vimrc.moon<cr>]]
 
-vim.cmd('colorscheme gruvbox')
+-- Hot reload config
+vimp.nnoremap '<leader>r', ->
+  vimp.unmapAll!
+  util.unloadLuaNamespace('vimrc')
+  MoonMaker.compileAll(false)
+  require('vimrc')
+  print("Reloaded vimrc")
