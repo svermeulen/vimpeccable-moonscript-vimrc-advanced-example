@@ -38,8 +38,8 @@ vimp.nnoremap '<leader>ev', -> vim.cmd("vsplit ~/.config/nvim/plugged/vimpeccabl
 
 -- Hot reload config
 vimp.nnoremap '<leader>r', ->
-  vimp.unmapAll!
-  util.unloadLuaNamespace('vimrc')
+  vimp.unmap_all!
+  util.unload_lua_namespace('vimrc')
   vim.cmd('silent wa')
   MoonMaker.compileAll(false)
   require('vimrc')
