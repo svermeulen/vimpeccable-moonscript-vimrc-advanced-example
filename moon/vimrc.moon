@@ -1,5 +1,4 @@
 
-require('vimp')
 util = require('vimrc.util')
 MoonMaker = require("moonmaker")
 
